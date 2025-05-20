@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -17,7 +18,8 @@ class HomeController extends Controller
         // DB::connection()->enableQueryLog(); kiểm tra câu lệnh query
         $categories = Category::where('parent_id', 0)->get();
         // $queries = DB::getQueryLog();
-        return view('home.home', compact(['sliders', 'categories']));
+        $products = Product::latest()->take(6)->get();
+        return view('home.home', compact(['sliders', 'categories', 'products']));
     }
     public function test()
     {
