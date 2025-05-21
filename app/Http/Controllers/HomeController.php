@@ -20,7 +20,8 @@ class HomeController extends Controller
         // $queries = DB::getQueryLog();
         $products = Product::latest()->take(6)->get();
         $productsRecommend = Product::latest('views_count', 'desc')->take(6)->get();
-        return view('home.home', compact(['sliders', 'categories', 'products', 'productsRecommend']));
+        $categoryLimit = Category::where('parent_id', 0)->take(3)->get();
+        return view('home.home', compact(['sliders', 'categories', 'products', 'productsRecommend', 'categoryLimit']));
     }
     public function test()
     {
