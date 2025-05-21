@@ -19,7 +19,8 @@ class HomeController extends Controller
         $categories = Category::where('parent_id', 0)->get();
         // $queries = DB::getQueryLog();
         $products = Product::latest()->take(6)->get();
-        return view('home.home', compact(['sliders', 'categories', 'products']));
+        $productsRecommend = Product::latest('views_count', 'desc')->take(6)->get();
+        return view('home.home', compact(['sliders', 'categories', 'products', 'productsRecommend']));
     }
     public function test()
     {
