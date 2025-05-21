@@ -16,4 +16,8 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/test', [HomeController::class, 'test']);
+
+Route::get('/category/{slug}/{id}', [
+    'as' => 'category.product',
+    'uses' => 'App\Http\Controllers\CategoryController@index',
+]);
