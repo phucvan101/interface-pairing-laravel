@@ -27,3 +27,7 @@ Route::get('/category/{slug}/{id}', [
 
 // search product
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
+// add to cart
+Route::get('/products/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
