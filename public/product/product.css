@@ -1,0 +1,70 @@
+/* Sản phẩm trong trang tìm kiếm */
+.product-image-wrapper {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s;
+    padding: 15px 10px 20px 10px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image-wrapper:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.product-image-wrapper img {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.productinfo h2 {
+    color: #ff9800;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+.productinfo p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 12px;
+    min-height: 40px;
+}
+
+.btn.add-to-cart {
+    background: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 22px;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.btn.add-to-cart:hover {
+    background: #e67e22;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .product-image-wrapper {
+        min-height: 340px;
+        padding: 10px 5px 15px 5px;
+    }
+
+    .productinfo h2 {
+        font-size: 18px;
+    }
+
+    .productinfo p {
+        font-size: 14px;
+    }
+}

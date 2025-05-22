@@ -93,11 +93,17 @@
                     <!--end main menu-->
 
                 </div>
+
+                <!-- Search -->
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" />
+                        <form action="{{route('search')}}">
+                            <input type="text" name="query" placeholder="Search products..." value="{{request('query')}}" />
+                        </form>
                     </div>
                 </div>
+                <!--End Search -->
+
             </div>
         </div>
     </div><!--/header-bottom-->

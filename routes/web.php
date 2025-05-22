@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -15,9 +16,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+// home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// category 
 Route::get('/category/{slug}/{id}', [
     'as' => 'category.product',
     'uses' => 'App\Http\Controllers\CategoryController@index',
 ]);
+
+// search product
+Route::get('/search', [ProductController::class, 'search'])->name('search');
