@@ -13,7 +13,8 @@ $baseUrl = config('app.base_url');
 
 @section('js')
 <script>
-    window.cartUpdateUrl = "{{ route('cart.update') }}"; // khai bao trong file blade de file js hieu 
+    window.cartUpdateUrl = "{{ route('cart.update') }}"; // khai bao trong file blade de file js hieu
+    window.cartDeleteUrl = "{{ route('cart.delete') }}";
     window.csrfToken = "{{ csrf_token() }}";
 </script>
 <script src="{{ asset('cart/cart.js') }}"></script>

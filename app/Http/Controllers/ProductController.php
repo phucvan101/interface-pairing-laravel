@@ -66,4 +66,24 @@ class ProductController extends Controller
         }
         return response()->json(['code' => 404]);
     }
+
+    public function deleteCart()
+    {
+        $id = request()->input('id');
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+            // Tính lại tổng
+            $total = 0;
+            foreach ($cart as $item) {
+                $total += $item['price'] * $item['quantity'];
+            }
+            return response()->json([
+                'code' => 200,
+                'grand_total' => $total,
+            ]);
+        }
+        return response()->json(['code' => 404]);
+    }
 }

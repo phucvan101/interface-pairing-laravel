@@ -38,3 +38,4 @@ Route::get('/products/show-to-cart', [ProductController::class, 'showCart'])->na
 
 // update cart 
 Route::post('/products/update-cart', [ProductController::class, 'updateCart'])->name('cart.update');
+Route::post('/products/delete-cart', [ProductController::class, 'deleteCart'])->name('cart.delete');

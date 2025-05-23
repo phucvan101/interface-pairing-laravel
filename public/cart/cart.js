@@ -35,4 +35,24 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.cart_quantity_delete').on('click', function (e) {
+        e.preventDefault();
+        let $row = $(this).closest('tr');
+        let productId = $row.data('id');
+        $.ajax({
+            url: window.cartDeleteUrl,
+            method: 'POST',
+            data: {
+                id: productId,
+                _token: window.csrfToken
+            },
+            success: function (res) {
+                if (res.code === 200) {
+                    $row.remove();
+                    $('h2:contains("Total:")').text('Total: ' + res.grand_total.toLocaleString() + ' VND');
+                }
+            }
+        });
+    });
 });
