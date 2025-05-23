@@ -14,6 +14,8 @@
     <link href="{{asset('eshopper/css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('eshopper/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('eshopper/css/main.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+
     @yield('css')
 </head>
 

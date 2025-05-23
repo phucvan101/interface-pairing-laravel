@@ -18,14 +18,14 @@ class ProductController extends Controller
 
     public function addToCart($id)
     {
-        // session()->forget('cart');
-        // print_r('end');
+        // session()->flush();
         $product = Product::find($id);
-        $cart = session()->get('cart');
+        $cart = session()->get('cart', []); // sẽ trả về mảng rỗng nếu chưa có cart, tránh lỗi undefined array key.
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
         } else {
             $cart[$id] = [
+                'image' => $product->feature_image_path,
                 'name' => $product->name,
                 'price' => $product->price,
                 'quantity' => 1
@@ -33,11 +33,15 @@ class ProductController extends Controller
         }
 
         session()->put('cart', $cart); // lưu session cart để load trang khác vẫn ra được 
-
+        return response()->json([
+            'code' => 200,
+            'message' => 'success',
+        ], 200);
     }
 
     public function showCart()
     {
-        dd('view');
+        $carts = session()->get('cart');
+        return view('product.cart', compact('carts'));
     }
 }
