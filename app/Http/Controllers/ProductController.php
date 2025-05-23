@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     public function showCart()
     {
-        $carts = session()->get('cart');
+        $carts = session()->get('cart', []); // thêm [] để khi vào cart không bị lỗi null 
         return view('product.cart', compact('carts'));
     }
 

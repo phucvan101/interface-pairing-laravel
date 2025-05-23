@@ -17,7 +17,7 @@ $baseUrl = config('app.base_url');
     window.cartDeleteUrl = "{{ route('cart.delete') }}";
     window.csrfToken = "{{ csrf_token() }}";
 </script>
-<script src="{{ asset('cart/cart.js') }}"></script>
+<script src="{{ asset('cart/changeQuantity.js') }}"></script>
 @endsection
 
 

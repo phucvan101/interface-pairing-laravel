@@ -20,12 +20,12 @@
 </head>
 
 <body>
-
+    <script src="{{asset('eshopper/js/jquery-3.7.1.min.js')}}"></script> <!-- đề lên trên phần content để khi bắt sự kiện click không bị lỗi -->
     @include('components.header')
 
     @yield('content')
     @include('components.footer')
-
+    <script src="{{ asset('cart/addToCart.js') }}"></script>
     <script src="{{asset('eshopper/js/jquery.js')}}"></script>
     <script src="{{asset('eshopper/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('eshopper/js/jquery.scrollUp.min.js')}}"></script>
