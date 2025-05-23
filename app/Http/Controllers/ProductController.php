@@ -44,4 +44,26 @@ class ProductController extends Controller
         $carts = session()->get('cart');
         return view('product.cart', compact('carts'));
     }
+
+    public function updateCart()
+    {
+        $id = request()->input('id');
+        $quantity = request()->input('quantity');
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity'] = $quantity;
+            session()->put('cart', $cart);
+            // tinh tong 
+            $total = 0;
+            foreach ($cart as $item) {
+                $total += $item['price'] * $item['quantity'];
+            }
+            return response()->json([
+                'code' => 200,
+                'cart_total' => $cart[$id]['price'] * $cart[$id]['quantity'],
+                'grand_total' => $total,
+            ]);
+        }
+        return response()->json(['code' => 404]);
+    }
 }

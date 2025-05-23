@@ -35,3 +35,6 @@ Route::get('/products/add-to-cart/{id}', [ProductController::class, 'addToCart']
 
 // show cart 
 Route::get('/products/show-to-cart', [ProductController::class, 'showCart'])->name('showCart');
+
+// update cart 
+Route::post('/products/update-cart', [ProductController::class, 'updateCart'])->name('cart.update');

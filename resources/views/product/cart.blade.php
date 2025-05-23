@@ -12,7 +12,12 @@ $baseUrl = config('app.base_url');
 @endsection()
 
 @section('js')
-@endsection()
+<script>
+    window.cartUpdateUrl = "{{ route('cart.update') }}"; // khai bao trong file blade de file js hieu 
+    window.csrfToken = "{{ csrf_token() }}";
+</script>
+<script src="{{ asset('cart/cart.js') }}"></script>
+@endsection
 
 
 @section('content')
@@ -42,11 +47,11 @@ $baseUrl = config('app.base_url');
                     @php
                     $total = 0;
                     @endphp
-                    @foreach($carts as $cartItem)
+                    @foreach($carts as $id => $cartItem)
                     @php
                     $total += $cartItem['price'] * $cartItem['quantity']
                     @endphp
-                    <tr>
+                    <tr data-id="{{$id}}">
                         <td class="cart_product">
                             <a href=""><img style="width: 70px;" src="{{$baseUrl .$cartItem['image']}}" alt=""></a>
 
@@ -60,9 +65,9 @@ $baseUrl = config('app.base_url');
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
+                                <!-- <a class="cart_quantity_up" href=""> + </a> -->
                                 <input class="cart_quantity_input" type="text" name="quantity" value="{{$cartItem['quantity']}}" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
+                                <!-- <a class="cart_quantity_down" href=""> - </a> -->
                             </div>
                         </td>
                         <td class="cart_total">
