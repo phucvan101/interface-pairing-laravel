@@ -31,3 +31,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 // add to cart
 Route::get('/products/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
+
+
+// show cart 
+Route::get('/products/show-to-cart', [ProductController::class, 'showCart'])->name('showCart');
