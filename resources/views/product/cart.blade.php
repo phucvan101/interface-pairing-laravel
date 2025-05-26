@@ -82,9 +82,12 @@ $baseUrl = config('app.base_url');
                     @endforeach
                 </tbody>
             </table>
-            <div class="col-md-12">
+            <div class="col-md-12" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
                 <h2>Total: {{number_format($total)}} VND</h2>
+                <a href="{{route('showOrder')}}" class="btn btn-success" style="font-size: 18px; padding: 10px 25px;">Order Now</a>
+
             </div>
+
         </div>
     </div>
 </section>

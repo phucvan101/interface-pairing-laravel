@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +51,7 @@ Route::get('/products/show-to-cart', [ProductController::class, 'showCart'])->na
 // update cart 
 Route::post('/products/update-cart', [ProductController::class, 'updateCart'])->name('cart.update');
 Route::post('/products/delete-cart', [ProductController::class, 'deleteCart'])->name('cart.delete');
+
+
+// show order
+Route::get('/show-order', [OrderController::class, 'showOrder'])->name('showOrder');
