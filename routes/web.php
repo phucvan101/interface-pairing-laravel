@@ -55,3 +55,4 @@ Route::post('/products/delete-cart', [ProductController::class, 'deleteCart'])->
 
 // show order
 Route::get('/show-order', [OrderController::class, 'showOrder'])->name('showOrder');
+Route::post('/create-order', [OrderController::class, 'createOrder'])->name('createOrder');
