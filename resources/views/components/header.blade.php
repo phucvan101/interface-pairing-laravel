@@ -1,3 +1,18 @@
+<!-- @section('css')
+<style>
+    .fa-sign-out {
+        background: #FFFFFF;
+        color: #696763;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 0;
+        margin-top: 10px;
+    }
+</style>
+@endsection -->
+
+
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -69,7 +84,21 @@
                             <li>
                                 <a href="{{route('showCart')}}"><i class="fa fa-shopping-cart"></i> Cart</a>
                             </li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                            @if (auth()->check())
+                            <li>
+                                <a href="">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" style="background:none;border:none;color:inherit;padding:0;cursor:pointer;">
+                                            <i class="fa fa-sign-out"></i> Logout
+                                        </button>
+                                    </form>
+                                </a>
+                            </li>
+
+                            @else
+                            <li><a href="{{route('indexLogin')}}"><i class="fa fa-lock"></i> Login</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
