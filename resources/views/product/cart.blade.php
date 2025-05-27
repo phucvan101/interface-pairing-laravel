@@ -62,7 +62,7 @@ $baseUrl = config('app.base_url');
 
                         </td>
                         <td class="cart_price">
-                            <p>{{number_format($cartItem['price'])}} $</p>
+                            <p>${{number_format($cartItem['price'])}} </p>
                         </td>
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
@@ -72,7 +72,7 @@ $baseUrl = config('app.base_url');
                             </div>
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total_price">{{number_format($cartItem['price'] * $cartItem['quantity'])}} $</p>
+                            <p class="cart_total_price">${{number_format($cartItem['price'] * $cartItem['quantity'])}} </p>
                         </td>
                         <td class="cart_delete">
                             <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -83,7 +83,7 @@ $baseUrl = config('app.base_url');
                 </tbody>
             </table>
             <div class="col-md-12" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                <h2>Total: {{number_format($total)}} $</h2>
+                <h2>Total: ${{number_format($total)}} </h2>
                 <a href="{{route('showOrder')}}" class="btn btn-success" style="font-size: 18px; padding: 10px 25px;">Order Now</a>
 
             </div>

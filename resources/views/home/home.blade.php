@@ -18,6 +18,36 @@ $baseUrl = config('app.base_url');
 
 @endsection()
 
+@if (session('error'))
+<div id="flash-message" class="alert alert-danger custom-alert">
+    {{ session('error') }}
+</div>
+
+<script>
+    setTimeout(function() {
+        const msg = document.getElementById('flash-message');
+        if (msg) {
+            msg.style.display = 'none';
+        }
+    }, 5000); // 5000ms = 5s
+</script>
+@endif
+
+@if (session('success'))
+<div id="flash-message" class="alert alert-success custom-alert">
+    {{ session('success') }}
+</div>
+
+<script>
+    setTimeout(function() {
+        const msg = document.getElementById('flash-message');
+        if (msg) {
+            msg.style.display = 'none';
+        }
+    }, 5000); // 5000ms = 5s
+</script>
+@endif
+
 
 @section('content')
 

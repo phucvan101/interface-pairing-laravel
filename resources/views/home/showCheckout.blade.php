@@ -41,12 +41,18 @@ $baseUrl = config('app.base_url');
                         <div class="bill-to">
                             <p>Bill To</p>
                             <div class="form-one">
-
-                                <input type="text" name="customer_name" placeholder="FullName">
-                                <input type="text" name="customer_email" placeholder="Email">
-                                <input type="text" name="customer_phone" placeholder="Phone">
-                                <input type="text" name="customer_address" placeholder="Address">
-
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="customer_name" placeholder="Full Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" name="customer_email" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="customer_phone" placeholder="Phone">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="customer_address" placeholder="Address">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,7 +92,7 @@ $baseUrl = config('app.base_url');
 
                             </td>
                             <td class="cart_price">
-                                <p>{{number_format($cartItem['price'])}} $</p>
+                                <p>${{number_format($cartItem['price'])}}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -96,7 +102,7 @@ $baseUrl = config('app.base_url');
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">{{number_format($cartItem['price'] * $cartItem['quantity'])}} $</p>
+                                <p class="cart_total_price">${{number_format($cartItem['price'] * $cartItem['quantity'])}} </p>
                             </td>
 
                         </tr>
@@ -108,7 +114,7 @@ $baseUrl = config('app.base_url');
                                 <table class="table table-condensed total-result">
                                     <tr>
                                         <td>Cart Sub Total</td>
-                                        <td>{{number_format($total)}} $</td>
+                                        <td>${{number_format($total)}} </td>
                                     </tr>
                                     <tr class="shipping-cost">
                                         <td>Shipping Cost</td>
@@ -116,7 +122,7 @@ $baseUrl = config('app.base_url');
                                     </tr>
                                     <tr>
                                         <td>Total</td>
-                                        <td><span>{{number_format($total)}} $</span></td>
+                                        <td><span>${{number_format($total)}} </span></td>
                                     </tr>
                                 </table>
                             </td>
