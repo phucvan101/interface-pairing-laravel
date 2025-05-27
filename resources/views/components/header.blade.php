@@ -78,7 +78,11 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
+                            @if(auth()->check())
+                            <li><a href="#"><i class="fa fa-user"></i> {{auth()->user()->name}}</a></li>
+                            @else
                             <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                            @endif
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li>
                                 <a href="{{route('showCart')}}"><i class="fa fa-shopping-cart"></i> Cart</a>
