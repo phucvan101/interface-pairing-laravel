@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Models\Product;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -24,7 +25,7 @@ class OrderController extends Controller
         return view('home.showCheckout', compact('carts'));
     }
 
-    public function createOrder(Request $request)
+    public function createOrder(OrderRequest $request)
     {
         $carts = session()->get('cart', []);
 
@@ -40,10 +41,10 @@ class OrderController extends Controller
             $order = Order::create([
                 'customer_id' => auth()->check() ? auth()->id() : null,
                 'order_code' => Order::generateOrderCode(),
-                'customer_name' => $request->customer_name,
-                'customer_email' => $request->customer_email,
-                'customer_phone' => $request->customer_phone,
-                'customer_address' => $request->customer_address,
+                'customer_name' => request()->customer_name,
+                'customer_email' => request()->customer_email,
+                'customer_phone' => request()->customer_phone,
+                'customer_address' => request()->customer_address,
                 'total_amount' => $totalAmount,
             ]);
 

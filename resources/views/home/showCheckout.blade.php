@@ -10,6 +10,38 @@ $baseUrl = config('app.base_url');
 
 @section('css')
 <link rel="stylesheet" href="{{asset('home/home.css')}}">
+<style>
+    input.form-control {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 16px;
+        width: 100%;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input.form-control:focus {
+        border-color: #f0ad4e;
+        /* màu vàng của Bootstrap warning */
+        box-shadow: 0 0 8px rgba(240, 173, 78, 0.5);
+        outline: none;
+    }
+
+    input.is-invalid {
+        border-color: #dc3545;
+    }
+
+    .alert.alert-danger {
+        margin-top: 8px;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .form-one .mb-3 {
+        margin-bottom: 20px;
+
+    }
+</style>
 @endsection()
 
 @section('js')
@@ -42,16 +74,37 @@ $baseUrl = config('app.base_url');
                             <p>Bill To</p>
                             <div class="form-one">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="customer_name" placeholder="Full Name">
+                                    <input type="text" class="form-control 
+                                     @error('customer_name') is-invalid @enderror" name="customer_name" placeholder="Full Name" value="{{ old('customer_name') }}">
+                                    @error('customer_name')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" name="customer_email" placeholder="Email">
+                                    <input type="email" class="form-control @error('customer_email') is-invalid @enderror" name="customer_email" placeholder="Email" value="{{ old('customer_email') }}">
+                                    @error('customer_email')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="customer_phone" placeholder="Phone">
+                                    <input type="text" class="form-control @error('customer_phone') is-invalid @enderror" name="customer_phone" placeholder="Phone" value="{{ old('customer_phone') }}">
+                                    @error('customer_phone')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="customer_address" placeholder="Address">
+                                    <input type="text" class="form-control @error('customer_address') is-invalid @enderror" name="customer_address" placeholder="Address" value="{{ old('customer_address') }}">
+                                    @error('customer_address')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

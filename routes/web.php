@@ -4,55 +4,47 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-// home
+// Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// login
-Route::get('/login', [LoginController::class, 'index'])->name('indexLogin');
-Route::post('/login', [LoginController::class, 'loginCustomer'])->name('login');
-Route::post('/sign_up', [LoginController::class, 'signUpCustomer'])->name('signUp');
+// Auth
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login', 'index')->name('indexLogin');
+    Route::post('/login', 'loginCustomer')->name('login');
+    Route::post('/sign_up', 'signUpCustomer')->name('signUp');
+});
+
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/');
 })->name('logout');
 
+// Category
+Route::get('/category/{slug}/{id}', [CategoryController::class, 'index'])->name('category.product');
 
-// category 
-Route::get('/category/{slug}/{id}', [
-    'as' => 'category.product',
-    'uses' => 'App\Http\Controllers\CategoryController@index',
-]);
+// Products
+Route::controller(ProductController::class)->prefix('products')->group(function () {
+    Route::get('/add-to-cart/{id}', 'addToCart')->name('addToCart');
+    Route::get('/show-to-cart', 'showCart')->name('showCart');
+    Route::post('/update-cart', 'updateCart')->name('cart.update');
+    Route::post('/delete-cart', 'deleteCart')->name('cart.delete');
+});
 
-// search product
+// Product Search
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-
-// add to cart
-Route::get('/products/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
-
-
-// show cart 
-Route::get('/products/show-to-cart', [ProductController::class, 'showCart'])->name('showCart');
-
-// update cart 
-Route::post('/products/update-cart', [ProductController::class, 'updateCart'])->name('cart.update');
-Route::post('/products/delete-cart', [ProductController::class, 'deleteCart'])->name('cart.delete');
-
-
-// show order
-Route::get('/show-order', [OrderController::class, 'showOrder'])->name('showOrder');
-Route::post('/create-order', [OrderController::class, 'createOrder'])->name('createOrder');
+// Order
+Route::controller(OrderController::class)->group(function () {
+    Route::get('/show-order', 'showOrder')->name('showOrder');
+    Route::post('/create-order', 'createOrder')->name('createOrder');
+});
