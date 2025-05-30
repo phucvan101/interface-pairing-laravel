@@ -46,6 +46,7 @@ class OrderController extends Controller
                 'customer_phone' => request()->customer_phone,
                 'customer_address' => request()->customer_address,
                 'total_amount' => $totalAmount,
+                'status' => 'pending', // Trạng thái đơn hàng ban đầu
             ]);
 
             // Lưu chi tiết đơn hàng

@@ -26,4 +26,17 @@ class Order extends Model
 
         return $code;
     }
+
+    public function getStatusTextAttribute()
+    {
+        $statuses = [
+            'pending' => 'Chờ xác nhận',
+            'confirmed' => 'Đã xác nhận',
+            'shipping' => 'Đang giao hàng',
+            'delivered' => 'Đã giao hàng',
+            'cancelled' => 'Đã hủy'
+        ];
+
+        return $statuses[$this->status] ?? 'Không xác định';
+    }
 }

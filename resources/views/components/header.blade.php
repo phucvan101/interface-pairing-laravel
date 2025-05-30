@@ -1,18 +1,3 @@
-<!-- @section('css')
-<style>
-    .fa-sign-out {
-        background: #FFFFFF;
-        color: #696763;
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        font-weight: 300;
-        padding: 0;
-        margin-top: 10px;
-    }
-</style>
-@endsection -->
-
-
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">

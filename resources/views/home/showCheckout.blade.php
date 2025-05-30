@@ -69,10 +69,10 @@ $baseUrl = config('app.base_url');
             @csrf
             <div class="shopper-informations">
                 <div class="row">
-                    <div class="col-sm-5 clearfix">
+                    <div class="col-sm-12 clearfix">
                         <div class="bill-to">
                             <p>Bill To</p>
-                            <div class="form-one">
+                            <div class="form-one" style="width: 100%;">
                                 <div class="mb-3">
                                     <input type="text" class="form-control 
                                      @error('customer_name') is-invalid @enderror" name="customer_name" placeholder="Full Name" value="{{ old('customer_name') }}">

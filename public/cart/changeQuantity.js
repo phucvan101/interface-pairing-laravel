@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
         let total = price * quantity;
-        $row.find('.cart_total_price').text(total.toLocaleString()); //Hiển thị lại tổng tiền dòng đó với định dạng hàng nghìn (dấu phẩy) thì number_format mới hiếu
+        $row.find('.cart_total_price').text('$' + total.toLocaleString()); //Hiển thị lại tổng tiền dòng đó với định dạng hàng nghìn (dấu phẩy) thì number_format mới hiếu
 
         // Tính lại tổng tiền toàn bộ giỏ hàng
         let grandTotal = 0;
@@ -16,7 +16,7 @@ $(document).ready(function () {
             let val = parseInt($(this).text().replace(/[^0-9]/g, '')) || 0;
             grandTotal += val;
         });
-        $('h2:contains("Total:")').text('Total: ' + grandTotal.toLocaleString() + ' VND');
+        $('h2:contains("Total:")').text('Total: $' + grandTotal.toLocaleString());
 
 
         $.ajax({
@@ -29,8 +29,8 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.code === 200) {
-                    $row.find('.cart_total_price').text(res.cart_total.toLocaleString());
-                    $('h2:contains("Total:")').text('Total: ' + res.grand_total.toLocaleString() + ' VND');
+                    $row.find('.cart_total_price').text('$' + res.cart_total.toLocaleString());
+                    $('h2:contains("Total:")').text('Total: $' + res.grand_total.toLocaleString());
                 }
             }
         });
@@ -50,7 +50,7 @@ $(document).ready(function () {
             success: function (res) {
                 if (res.code === 200) {
                     $row.remove();
-                    $('h2:contains("Total:")').text('Total: ' + res.grand_total.toLocaleString() + ' VND');
+                    $('h2:contains("Total:")').text('Total: $' + res.grand_total.toLocaleString());
                 }
             }
         });
