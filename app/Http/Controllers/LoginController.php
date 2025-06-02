@@ -37,7 +37,7 @@ class LoginController extends Controller
         ])) {
             return redirect()->to('/');
         } else {
-            dd("Email or password is incorrect");
+            return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng!')->withInput();
         }
     }
 

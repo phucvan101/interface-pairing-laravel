@@ -23,7 +23,17 @@
     <script src="{{asset('eshopper/js/jquery-3.7.1.min.js')}}"></script> <!-- đề lên trên phần content để khi bắt sự kiện click không bị lỗi -->
     @include('components.header')
 
+    @if(session('success') || session('error'))
+    <div
+        id="flashMessage"
+        class="alert {{ session('success') ? 'alert-success' : 'alert-danger' }}"
+        style="margin: 15px; font-weight: bold;">
+        {{ session('success') ?? session('error') }}
+    </div>
+    @endif
     @yield('content')
+
+
     @include('components.footer')
     <script src="{{ asset('cart/addToCart.js') }}"></script>
     <script src="{{asset('eshopper/js/jquery.js')}}"></script>
@@ -32,6 +42,16 @@
     <script src="{{asset('eshopper/js/price-range.js')}}"></script>
     <script src="{{asset('eshopper/js/jquery.prettyPhoto.js')}}"></script>
     <script src="{{asset('eshopper/js/main.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('#flashMessage').fadeOut('slow', function() {
+                    $(this).remove();
+                });
+            }, 5000); // sau 5 giây
+        });
+    </script>
+
     @yield('js')
 </body>
 

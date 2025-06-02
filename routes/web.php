@@ -35,7 +35,7 @@ Route::get('/category/{slug}/{id}', [CategoryController::class, 'index'])->name(
 // Products
 Route::controller(ProductController::class)->prefix('products')->group(function () {
     Route::get('/add-to-cart/{id}', 'addToCart')->name('addToCart');
-    Route::get('/show-to-cart', 'showCart')->name('showCart');
+    Route::get('/show-to-cart', 'showCart')->middleware('checkLogin')->name('showCart');
     Route::post('/update-cart', 'updateCart')->name('cart.update');
     Route::post('/delete-cart', 'deleteCart')->name('cart.delete');
 });
